@@ -1,6 +1,4 @@
-import {oneFunc} from './modules/one.js'
-import {twoFunc} from './modules/two.js'
+import timer from './modules/timer.js'
 
+timer('28 march 2026');
 
-oneFunc();
-twoFunc();
