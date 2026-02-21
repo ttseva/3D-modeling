@@ -5,7 +5,7 @@ const timer = (deadline) => {
   const timerSeconds = document.getElementById('timer-seconds');
 
   const addZero = (num) => {
-    return num < 10 ? `0${num}` : num;
+    return num < 10 ? '0' + num : num;
   }
 
   const getTimeRemaining = () => {
