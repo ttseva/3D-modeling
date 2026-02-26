@@ -1,7 +1,16 @@
-const slider = () => {
-  const sliderBlock = document.querySelector('.portfolio-content');
-  const slides = document.querySelectorAll('.portfolio-item');
-  const dots = document.querySelectorAll('.dot');
+const slider = (sliderClass, slidesClass, dotsClass, buttonClass) => {
+
+  const sliderBlock = document.querySelector(sliderClass) ?? null;
+  const slides = document.querySelectorAll(slidesClass) ?? null;
+
+  if (!sliderBlock && !slides) return;
+
+  const dots = document.querySelectorAll(dotsClass);
+  const sliderBtn = document.querySelector(buttonClass);
+
+  const dotActive = 'dot-active';
+  const slideActive = 'portfolio-item-active';
+
   const timeInterval = 2000;
   let currentSlide = 0;
   let interval;
@@ -16,16 +25,16 @@ const slider = () => {
   }
 
   const autoSlide = () => {
-    prevSlide(slides, currentSlide, 'portfolio-item-active');
-    prevSlide(dots, currentSlide, 'dot-active');
+    prevSlide(slides, currentSlide, slideActive);
+    prevSlide(dots, currentSlide, dotActive);
 
     currentSlide++;
     if (currentSlide >= slides.length) {
       currentSlide = 0;
     }
 
-    nextSlide(slides, currentSlide, 'portfolio-item-active');
-    nextSlide(dots, currentSlide, 'dot-active');
+    nextSlide(slides, currentSlide, slideActive);
+    nextSlide(dots, currentSlide, dotActive);
 
   }
 
@@ -36,12 +45,12 @@ const slider = () => {
   sliderBlock.addEventListener('click', (e) => {
     e.preventDefault();
 
-    if (!e.target.matches('.dot, .portfolio-btn')) {
+    if (!e.target.matches(dotsClass, sliderBtn)) {
       return
     }
 
-    prevSlide(slides, currentSlide, 'portfolio-item-active');
-    prevSlide(dots, currentSlide, 'dot-active');
+    prevSlide(slides, currentSlide, slideActive);
+    prevSlide(dots, currentSlide, dotActive);
 
     if (e.target.matches('#arrow-right')) {
       currentSlide++;
@@ -62,8 +71,8 @@ const slider = () => {
       currentSlide = slides.length - 1;
     }
 
-    nextSlide(slides, currentSlide, 'portfolio-item-active');
-    nextSlide(dots, currentSlide, 'dot-active');
+    nextSlide(slides, currentSlide, slideActive);
+    nextSlide(dots, currentSlide, dotActive);
   });
 
   const stopSlide = () => {
@@ -72,12 +81,12 @@ const slider = () => {
 
 
   sliderBlock.addEventListener('mouseenter', (e) => {
-    if (e.target.matches('.dot, .portfolio-btn')) {
+    if (e.target.matches(dotsClass, sliderBtn)) {
       stopSlide();
     }
   }, true)
   sliderBlock.addEventListener('mouseleave', (e) => {
-    if (e.target.matches('.dot, .portfolio-btn')) {
+    if (e.target.matches(dotsClass, sliderBtn)) {
       startSlide(timeInterval);
     }
   }, true)
