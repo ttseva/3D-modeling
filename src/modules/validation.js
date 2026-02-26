@@ -1,7 +1,6 @@
 const validation = () => {
   const calcInputs = document.querySelectorAll('.calc-item');
   const formInputs = document.querySelectorAll('.main-form input, #form input, .footer-form input');
-  console.log(formInputs);
 
 
   calcInputs.forEach(input => {
