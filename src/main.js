@@ -5,6 +5,7 @@ import validation from './modules/validation.js'
 import tabs from './modules/tabs.js'
 import slider from './modules/slider.js'
 import dots from './modules/dots.js'
+import calc from './modules/calc.js'
 
 const sliderClass = '.portfolio-content';
 const slidesClass = '.portfolio-item';
@@ -18,5 +19,6 @@ validation();
 tabs();
 dots();
 slider(sliderClass, slidesClass, dotsClass, buttonClass);
+calc(100)
 
 
