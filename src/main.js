@@ -19,6 +19,7 @@ validation();
 tabs();
 dots();
 slider(sliderClass, slidesClass, dotsClass, buttonClass);
-calc(100)
+calc(100);
+
 
 

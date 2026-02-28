@@ -1,3 +1,5 @@
+import {animate} from "./helpers.js";
+
 const calc = (price = 100) => {
   const calcBlock = document.querySelector('.calc-block');
   const calcType = document.querySelector('.calc-type');
@@ -31,7 +33,18 @@ const calc = (price = 100) => {
       totalValue = 0;
     }
 
-    total.textContent = totalValue + ''
+    let currentNumber = +total.textContent;
+
+    animate({
+      duration: 700,
+      easing: "linear",
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        total.textContent = `${Math.round(currentNumber + progress * (totalValue - currentNumber))}`;
+      }
+    })
   }
 
   calcBlock.addEventListener('input', (e) => {
