@@ -13,12 +13,16 @@ const validation = () => {
 
   formInputs.forEach(input => {
     input.addEventListener('input', (e) => {
-      if (input.type === 'text') {
-        e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\-\s]/g, '');
+      const inputName = input.getAttribute('name');
+
+      if (inputName === 'user_name') {
+        e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\s]/g, '');
+      } else if (inputName === 'user_message') {
+        e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ0-9\s\.,!?:;"'\(\)\-]/g, '');
       } else if (input.type === 'email') {
         e.target.value = e.target.value.replace(/[^a-zA-Z0-9@\-_.!~*']/g, '');
       } else if (input.type === 'tel') {
-        e.target.value = e.target.value.replace(/[^0-9\(\)\-]/g, '');
+        e.target.value = e.target.value.replace(/[^0-9\+\-\(\)]/g, '');
       }
     })
   })
