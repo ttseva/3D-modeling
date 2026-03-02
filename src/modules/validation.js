@@ -26,6 +26,24 @@ const validation = () => {
       }
     })
   })
+
+  formInputs.forEach(input => {
+    input.addEventListener('blur', (e) => {
+      const targetVal = e.target.value;
+      let result = '';
+
+      result = targetVal.replace(/\s+/g, ' ');
+      result = result.replace(/-+/g, '-');
+      result = result.replace(/^[\s-]+|[\s-]+$/g, '');
+      result = result.replace(/^[\s-]+|[\s-]+$/g, '');
+
+      if (input.type === 'text') {
+        result = result[0].toUpperCase() + result.slice(1).toLowerCase();
+      }
+
+      e.target.value = result;
+    })
+  })
 }
 
 export default validation;
