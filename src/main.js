@@ -13,7 +13,7 @@ const slidesClass = '.portfolio-item';
 const dotsClass = '.dot';
 const buttonClass = '.portfolio-btn';
 
-timer('28 march 2026');
+timer('28 july 2026');
 menu();
 modal()
 validation();
