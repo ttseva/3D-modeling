@@ -22,3 +22,5 @@ npm start
 ```
 
 Оно будет доступно по адрес `http://localhost:3000/`
+
+@ttseva • 2026
